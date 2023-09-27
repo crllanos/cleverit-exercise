@@ -8,12 +8,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -27,12 +29,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
+@Configuration
 public class AuthorizationFilter extends OncePerRequestFilter {
 
     private final static String bearer = "Bearer ";
 
-    @Value("${app.security.secret}")
-    private String secret;
+    //@Value(value = "${app.security.secret}")
+    private String secret = "s3cret";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

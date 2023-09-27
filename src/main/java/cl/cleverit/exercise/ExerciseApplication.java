@@ -1,5 +1,9 @@
 package cl.cleverit.exercise;
 
+import cl.cleverit.exercise.entity.AdminEntity;
+import cl.cleverit.exercise.entity.RoleEntity;
+import cl.cleverit.exercise.service.AdminService;
+import cl.cleverit.exercise.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +27,7 @@ public class ExerciseApplication {
 	 *
 	 */
 	@Bean
-	CommandLineRunner run(IAdminService adminService, IRoleService roleService){
+	CommandLineRunner run(AdminService adminService, RoleService roleService){
 		return args -> {
 			log.info("generando admins dummy");
 			String roleAdmin = "ROLE_ADMIN";
