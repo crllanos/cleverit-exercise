@@ -72,9 +72,9 @@ public class TaskController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity.BodyBuilder deleteTask(@PathVariable UUID id){
+    public ResponseEntity<String> deleteTask(@PathVariable UUID id){
         log.info(String.format("[DELETE] /%s", id));
         taskService.deleteTask(id);
-        return ResponseEntity.ok();
+        return ResponseEntity.ok("deleted");
     }
 }
