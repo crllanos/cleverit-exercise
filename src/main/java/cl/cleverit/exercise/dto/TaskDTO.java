@@ -18,5 +18,5 @@ public class TaskDTO {
     private String title;
     private String description;
     private LocalDate dueDate;
-    private TaskStatusEnum status;
+    private String status;
 }

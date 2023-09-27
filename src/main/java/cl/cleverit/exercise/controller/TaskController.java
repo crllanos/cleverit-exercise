@@ -64,7 +64,7 @@ public class TaskController {
     public TaskEntity editTaskStatus(@PathVariable UUID id, @RequestBody TaskDTO task){
         log.info(String.format("[PUT] /%s : %s", id, task));
         TaskEntity t = taskService.updateTaskStatus(id, TaskEntity.builder()
-                .status(task.getStatus().getName())
+                .status(task.getStatus())
                 .build());
         log.info(String.format("response: %s", t));
         return t;
