@@ -14,5 +14,5 @@ public interface TaskService {
     TaskEntity updateTask(UUID id, TaskEntity task);
     void deleteTask(UUID id);
 
-    // change status
+    TaskEntity updateTaskStatus(UUID id, TaskEntity task);
 }

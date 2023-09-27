@@ -48,16 +48,27 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public TaskEntity editTask(@PathVariable UUID id, @RequestBody TaskEntity task){
+    public TaskEntity editTask(@PathVariable UUID id, @RequestBody TaskDTO task){
         log.info(String.format("[PUT] /%s : %s", id, task));
-        TaskEntity t = taskService.updateTask(id, task);
+        TaskEntity t = taskService.updateTask(id, TaskEntity.builder()
+                    .title(task.getTitle())
+                    .description(task.getDescription())
+                    .dueDate(task.getDueDate())
+                .build());
         log.info(String.format("response: %s", t));
         return t;
     }
 
 
-    // @PatchMapping("/{id}")
-    // todo completar un task
+    @PatchMapping("/{id}")
+    public TaskEntity editTaskStatus(@PathVariable UUID id, @RequestBody TaskDTO task){
+        log.info(String.format("[PUT] /%s : %s", id, task));
+        TaskEntity t = taskService.updateTaskStatus(id, TaskEntity.builder()
+                .status(task.getStatus().getName())
+                .build());
+        log.info(String.format("response: %s", t));
+        return t;
+    }
 
 
     @DeleteMapping("/{id}")
