@@ -13,4 +13,6 @@ public interface TaskService {
     List<TaskEntity> readTaskList();
     TaskEntity updateTask(UUID id, TaskEntity task);
     void deleteTask(UUID id);
+
+    // change status
 }

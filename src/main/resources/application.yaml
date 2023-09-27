@@ -1,4 +1,9 @@
 spring:
-  data:
-    mongodb:
-      url: mongodb://admin:P4ssw0rD@localhost:27017/cleverit-exercise
+  datasource:
+    url: jdbc:h2:mem:cleverit-exercise
+    username: cleverit
+    password: passwrd
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true

@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface TaskRepository extends CrudRepository<TaskEntity, UUID> {
+
+
 }

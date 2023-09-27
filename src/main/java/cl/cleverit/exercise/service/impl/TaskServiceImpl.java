@@ -2,20 +2,28 @@ package cl.cleverit.exercise.service.impl;
 
 import cl.cleverit.exercise.entity.TaskEntity;
 import cl.cleverit.exercise.enums.TaskStatusEnum;
+import cl.cleverit.exercise.repository.TaskRepository;
 import cl.cleverit.exercise.service.TaskService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
+@RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
+
+    private final TaskRepository taskRepository;
 
     @Override
     public TaskEntity createTask(TaskEntity task) {
         task.setId(UUID.randomUUID());
-        task.setStatus(TaskStatusEnum.PROGRESS);
-        return null;
+        task.setStatus(TaskStatusEnum.PROGRESS.getName());
+        // return task;
+        return taskRepository.save(task);
     }
 
     @Override
@@ -25,7 +33,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskEntity> readTaskList() {
-        return null;
+        return StreamSupport.stream(taskRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
     @Override

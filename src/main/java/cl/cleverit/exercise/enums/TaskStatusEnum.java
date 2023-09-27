@@ -1,8 +1,16 @@
 package cl.cleverit.exercise.enums;
 
 public enum TaskStatusEnum {
-    PENDING, PROGRESS, COMPLETED
+    PENDING("PENDING"),
+    PROGRESS("PROGRESS"),
+    COMPLETED("COMPLETED");
 
-    // Estado de la tarea (pendiente, en progreso, completada, etc.).
+    private final String name;
 
-}
+    TaskStatusEnum (String name){
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }}

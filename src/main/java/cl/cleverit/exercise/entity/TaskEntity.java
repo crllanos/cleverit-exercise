@@ -1,8 +1,9 @@
 package cl.cleverit.exercise.entity;
 
-import cl.cleverit.exercise.enums.TaskStatusEnum;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
@@ -15,6 +16,8 @@ import java.util.UUID;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "tasks")
 public class TaskEntity {
     @Id
@@ -26,5 +29,5 @@ public class TaskEntity {
     private String title;
     private String description;
     private LocalDate dueDate;
-    private TaskStatusEnum status;
+    private String status;
 }
