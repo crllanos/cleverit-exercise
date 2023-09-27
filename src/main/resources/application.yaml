@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      url: mongodb://admin:P4ssw0rD@localhost:27017/cleverit-exercise
